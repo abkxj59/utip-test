@@ -1,0 +1,51 @@
+// colors
+// ---------------------------------
+
+// default
+
+$color-default-black: #000000;
+$color-default-white: #ffffff;
+$color-transparent: rgba(255, 255, 255, 0);
+
+// Project palette
+
+$color-green: #55c97b;
+$color-purple: #6666cc;
+
+// Typography
+// ---------------------------------
+
+// переменная используемая в html для подключения скейлинга
+$fz-default:                        12px;
+
+// у некоторых шрифтов в ios возникают проблемы с символом рубля
+// https://www.artlebedev.ru/kovodstvo/sections/159/#13
+$ff-rouble:                         "Rouble", "arial", sans-serif;
+
+$ff-roboto:                    "Roboto", "Arial", sans-serif;
+
+// Typography
+// ---------------------------------
+
+$shadow-default: 2px 2px 15px rgba(0, 0, 0, 0.1);
+
+// Animation
+// ---------------------------------
+
+$tf-default: ease;
+$trans-default: 0.3s $tf-default;
+
+// Viewports
+// ---------------------------------
+
+$vp-320:                            320px;
+$vp-768:                            768px;
+$vp-1000:                            1000px;
+$vp-1200:                           1200px;
+$vp-1400:                           1400px;
+
+// Retina
+// ---------------------------------
+
+$retina-dpi:                        144dpi;
+$retina-dppx:                       1.5dppx;

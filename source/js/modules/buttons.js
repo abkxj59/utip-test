@@ -1,0 +1,3 @@
+const initButtons = () => {};
+
+export {initButtons};

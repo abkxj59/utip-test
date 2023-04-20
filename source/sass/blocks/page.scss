@@ -1,0 +1,16 @@
+.page__main {
+  margin-left: 255px;
+  padding-left: 60px;
+  background-color: #f8faff;
+  min-height: 100vh;
+
+  @include vp-1000 {
+    margin-left: 112px;
+    padding-left: 20px;
+  }
+
+  @include vp-768 {
+    margin: 0;
+    padding: 0 10px;
+  }
+}
