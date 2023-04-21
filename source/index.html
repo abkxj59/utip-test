@@ -16,8 +16,25 @@
   <link rel="icon" href="favicon/favicon-32x32.png">
 </head>
 <body class="page__body">
-  <button type="button" class="get-button">Получить данные</button>
+  <section class="page__section starships">
+    <h1 class="starships__heading">Starships list from the Star Wars Universe</h1>
 
+    <button type="button" class="starships__get-button">Get starships</button>
+    <button type="button" class="starships__delete-button">Clear</button>
+
+    <table class="starships__table table">
+      <tr>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Max atmosphering speed</th>
+        <th>Hyperdrive rating</th>
+        <th>Length</th>
+      </tr>
+      <tr class="table__cap">
+        <td colspan="5">No data. Press button "Get starships"</td>
+      </tr>
+    </table>
+  </section>
   <script type="module" src="js/main.min.js"></script>
 </body>
 </html>

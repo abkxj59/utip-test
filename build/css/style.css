@@ -575,6 +575,10 @@ button,
   min-height: 100vh;
 }
 
+.table__cap--hidden {
+  display: none;
+}
+
 @media (max-width: 999px) {
   .page__main {
     margin-left: 112px;
