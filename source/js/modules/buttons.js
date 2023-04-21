@@ -1,8 +1,8 @@
 import {getData} from './server.js';
 import {printData, resetTable, showError} from './print.js';
 
-const getDataButton = document.querySelector('.starships__get-button');
-const deleteDataButton = document.querySelector('.starships__delete-button');
+const getDataButton = document.querySelector('.starships__button--get');
+const deleteDataButton = document.querySelector('.starships__button--delete');
 
 const initButtons = () => {
   getDataButton.addEventListener('click', () => {

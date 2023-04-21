@@ -425,10 +425,10 @@ body {
 html {
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 16px;
+  line-height: 130%;
   font-family: "Roboto", "Arial", sans-serif;
-  color: #000000;
+  color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -568,27 +568,188 @@ button,
   clip-path: inset(100%);
 }
 
-.page__main {
-  margin-left: 255px;
-  padding-left: 60px;
-  background-color: #f8faff;
+.page__body {
+  padding: 40px 0;
+}
+
+.page__background {
+  position: fixed;
+  top: 0;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: 55%;
+  object-position: 55%;
+  width: 100%;
+  z-index: -1;
   min-height: 100vh;
+}
+
+.starships {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  text-shadow: 2px 2px 8px #000000;
+}
+
+.starships__heading {
+  font-size: 46px;
+  line-height: 125%;
+}
+
+.starships__button {
+  color: inherit;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-weight: 500;
+  text-transform: uppercase;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.starships__button.focus-visible:focus {
+  -webkit-box-shadow: 0 0 20px #ffffff;
+  box-shadow: 0 0 20px #ffffff;
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  color: #000000;
+}
+
+.starships__button--get {
+  background-color: rgba(102, 255, 0, 0.4);
+}
+
+.starships__button--get.focus-visible:focus {
+  background-color: rgba(102, 255, 0, 0.8);
+}
+
+.starships__button--delete {
+  background-color: rgba(230, 66, 107, 0.6);
+}
+
+.starships__button--delete.focus-visible:focus {
+  background-color: #e6426b;
+}
+
+.starships__table-wrapper {
+  overflow-x: scroll;
+  margin-top: 50px;
+}
+
+.table {
+  border-collapse: collapse;
+  min-width: 100%;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #000000;
+  text-shadow: 2px 2px 8px #ffffff;
+}
+
+.table td,
+.table th {
+  border: 1px solid #000000;
+  padding: 2px 10px;
+}
+
+.table td:first-child,
+.table th:first-child {
+  border-left: none;
+}
+
+.table td:last-child,
+.table th:last-child {
+  border-right: none;
+}
+
+.table th {
+  border-top: none;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
 }
 
 .table__cap--hidden {
   display: none;
 }
 
-@media (max-width: 999px) {
-  .page__main {
-    margin-left: 112px;
-    padding-left: 20px;
+.table__cap td {
+  text-align: center;
+  padding: 10px;
+  border-radius: 0 0 15px 15px;
+  background-color: rgba(235, 55, 65, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1279px) {
+  .starships {
+    margin: 0 40px;
+  }
+
+  .starships__heading {
+    font-size: 36px;
   }
 }
 
 @media (max-width: 767px) {
-  .page__main {
-    margin: 0;
-    padding: 0 10px;
+  .page__body {
+    padding: 10px 0;
+  }
+
+  .starships {
+    border-radius: 20px;
+    margin: 0 10px;
+    padding: 10px;
+  }
+
+  .starships__heading {
+    font-size: 26px;
+  }
+
+  .starships__buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .starships__table-wrapper {
+    margin-top: 20px;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+}
+
+@media (hover: hover) {
+  .starships__button:hover:not(.focus-visible) {
+    -webkit-box-shadow: 0 0 20px #ffffff;
+    box-shadow: 0 0 20px #ffffff;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    color: #000000;
+  }
+
+  .starships__button--get:hover:not(.focus-visible) {
+    background-color: rgba(102, 255, 0, 0.8);
+  }
+
+  .starships__button--delete:hover:not(.focus-visible) {
+    background-color: #e6426b;
   }
 }

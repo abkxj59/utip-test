@@ -11,29 +11,38 @@
 
   <link rel="stylesheet" href="css/style.min.css">
 
-  <!-- <link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon"> -->
+  <link rel="icon" href="favicon.ico">
   <link rel="icon" href="favicon/favicon-16x16.png">
   <link rel="icon" href="favicon/favicon-32x32.png">
 </head>
 <body class="page__body">
+  <picture>
+    <source type="image/webp" srcset="img/back2.webp">
+    <img class="page__background" src="img/back2.jpg" alt="">
+  </picture>
+
   <section class="page__section starships">
     <h1 class="starships__heading">Starships list from the Star Wars Universe</h1>
 
-    <button type="button" class="starships__get-button">Get starships</button>
-    <button type="button" class="starships__delete-button">Clear</button>
+    <div class="starships__buttons">
+      <button type="button" class="starships__button starships__button--get">Get starships</button>
+      <button type="button" class="starships__button starships__button--delete">Clear list</button>
+    </div>
 
-    <table class="starships__table table">
-      <tr>
-        <th>Name</th>
-        <th>Class</th>
-        <th>Max atmosphering speed</th>
-        <th>Hyperdrive rating</th>
-        <th>Length</th>
-      </tr>
-      <tr class="table__cap">
-        <td colspan="5">No data. Press button "Get starships"</td>
-      </tr>
-    </table>
+    <div class="starships__table-wrapper">
+      <table class="starships__table table">
+        <tr>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Max atmosphering speed</th>
+          <th>Hyperdrive rating</th>
+          <th>Length</th>
+        </tr>
+        <tr class="table__cap">
+          <td colspan="5">No data. Press button "Get starships"</td>
+        </tr>
+      </table>
+    </div>
   </section>
   <script type="module" src="js/main.min.js"></script>
 </body>

@@ -1,3 +1,5 @@
+const ALERT_SHOW_TIME = 2500;
+
 const table = document.querySelector('.starships__table');
 const newRowsFragment = document.createDocumentFragment();
 const tableCap = document.querySelector('.table__cap');
@@ -39,6 +41,24 @@ const printData = (data) => {
 };
 
 
-const showError = () => {};
+const showError = () => {
+  const errorElement = document.createElement('div');
+  errorElement.textContent = 'Не удалось получить данные';
+  errorElement.style.position = 'absolute';
+  errorElement.style.width = '80%';
+  errorElement.style.top = '35%';
+  errorElement.style.left = '10%';
+  errorElement.style.padding = '80px 20px';
+  errorElement.style.backgroundColor = 'rgba(255, 35, 65, 0.95)';
+  errorElement.style.border = '5px black solid';
+  errorElement.style.borderRadius = '25px';
+  errorElement.style.fontSize = '25px';
+  errorElement.style.fontWeight = 'bold';
+  errorElement.style.textAlign = 'center';
+
+  table.append(errorElement);
+
+  setTimeout(() => errorElement.remove(), ALERT_SHOW_TIME);
+};
 
 export {printData, resetTable, showError};
