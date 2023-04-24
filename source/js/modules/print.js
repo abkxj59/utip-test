@@ -1,27 +1,41 @@
 const ALERT_SHOW_TIME = 2500;
+const ERROR_STYLE = {
+  'position': 'absolute',
+  'width': '80%',
+  'top': '35%',
+  'left': '10%',
+  'padding': '80px 20px',
+  'backgroundColor': 'rgba(255, 35, 65, 0.95)',
+  'border': '5px black solid',
+  'borderRadius': '25px',
+  'fontSize': '25px',
+  'fontWeight': 'bold',
+  'textAlign': 'center',
+};
+const STARSHIP_PARAMETERS = [
+  'name',
+  'starship_class',
+  'max_atmosphering_speed',
+  'hyperdrive_rating',
+  'length'
+];
 
 const table = document.querySelector('.starships__table');
 const newRowsFragment = document.createDocumentFragment();
 const tableCap = document.querySelector('.table__cap');
 
+const createNewCell = (data, parameter, row) => {
+  const newCell = document.createElement('td');
+  newCell.textContent = data[parameter];
+  row.appendChild(newCell);
+};
+
 const createNewRow = (data) => {
   const newRow = document.createElement('tr');
   newRow.classList.add('table__data-row');
-  const nameCell = document.createElement('td');
-  nameCell.textContent = data.name;
-  const classCell = document.createElement('td');
-  classCell.textContent = data.starship_class;
-  const speedCell = document.createElement('td');
-  speedCell.textContent = data.max_atmosphering_speed;
-  const hyperdriveCell = document.createElement('td');
-  hyperdriveCell.textContent = data.hyperdrive_rating;
-  const lengthCell = document.createElement('td');
-  lengthCell.textContent = data.length;
-  newRow.appendChild(nameCell);
-  newRow.appendChild(classCell);
-  newRow.appendChild(speedCell);
-  newRow.appendChild(hyperdriveCell);
-  newRow.appendChild(lengthCell);
+  STARSHIP_PARAMETERS.forEach((parameter) => {
+    createNewCell(data, parameter, newRow);
+  });
   newRowsFragment.appendChild(newRow);
 };
 
@@ -32,30 +46,25 @@ const resetTable = () => {
 };
 
 const printData = (data) => {
-  resetTable();
-  data.results.forEach((starship) => {
-    createNewRow(starship);
-  });
-  tableCap.classList.add('table__cap--hidden');
-  table.appendChild(newRowsFragment);
+  if (data) {
+    resetTable();
+    data.results.forEach((starship) => {
+      createNewRow(starship);
+    });
+    tableCap.classList.add('table__cap--hidden');
+    table.appendChild(newRowsFragment);
+  }
 };
 
 
 const showError = () => {
   const errorElement = document.createElement('div');
   errorElement.textContent = 'Не удалось получить данные';
-  errorElement.style.position = 'absolute';
-  errorElement.style.width = '80%';
-  errorElement.style.top = '35%';
-  errorElement.style.left = '10%';
-  errorElement.style.padding = '80px 20px';
-  errorElement.style.backgroundColor = 'rgba(255, 35, 65, 0.95)';
-  errorElement.style.border = '5px black solid';
-  errorElement.style.borderRadius = '25px';
-  errorElement.style.fontSize = '25px';
-  errorElement.style.fontWeight = 'bold';
-  errorElement.style.textAlign = 'center';
-
+  for (const property in ERROR_STYLE) {
+    if (ERROR_STYLE) {
+      errorElement.style[property] = ERROR_STYLE[property];
+    }
+  }
   table.append(errorElement);
 
   setTimeout(() => errorElement.remove(), ALERT_SHOW_TIME);
