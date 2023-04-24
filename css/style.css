@@ -638,8 +638,15 @@ button,
 }
 
 .starships__table-wrapper {
-  overflow-x: scroll;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   margin-top: 50px;
+}
+
+.starships__table-wrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .table {
