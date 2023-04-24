@@ -30,12 +30,25 @@ const createNewCell = (data, parameter, row) => {
   row.appendChild(newCell);
 };
 
+const addDeleteButton = (row) => {
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('table__delete-row-button');
+  deleteButton.addEventListener('click', () => {
+    row.remove();
+    if (!table.querySelector('.table__data-row')) {
+      tableCap.classList.remove('table__cap--hidden');
+    }
+  });
+  row.appendChild(deleteButton);
+};
+
 const createNewRow = (data) => {
   const newRow = document.createElement('tr');
   newRow.classList.add('table__data-row');
   STARSHIP_PARAMETERS.forEach((parameter) => {
     createNewCell(data, parameter, newRow);
   });
+  addDeleteButton(newRow);
   newRowsFragment.appendChild(newRow);
 };
 

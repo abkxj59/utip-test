@@ -642,6 +642,7 @@ button,
   -ms-overflow-style: none;
   scrollbar-width: none;
   margin-top: 50px;
+  max-height: 200px;
 }
 
 .starships__table-wrapper::-webkit-scrollbar {
@@ -658,6 +659,14 @@ button,
   text-shadow: 2px 2px 8px #ffffff;
 }
 
+.table thead {
+  position: sticky;
+  top: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(25%, rgba(255, 255, 255, 0.1)), color-stop(30%, rgba(255, 255, 255, 0.4)), color-stop(50%, white), to(white));
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.4) 30%, white 50%, white 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.4) 30%, white 50%, white 100%);
+}
+
 .table td,
 .table th {
   border: 1px solid #000000;
@@ -672,10 +681,16 @@ button,
 .table td:last-child,
 .table th:last-child {
   border-right: none;
+  padding-right: 25px;
 }
 
 .table th {
   border-top: none;
+  text-shadow: 0 0 4px #81e99f;
+}
+
+.table tr {
+  position: relative;
 }
 
 .table tr:last-child td {
@@ -693,6 +708,129 @@ button,
   background-color: rgba(235, 55, 65, 0.7);
   font-weight: 500;
   text-transform: uppercase;
+}
+
+.table__delete-row-button {
+  position: absolute;
+  cursor: pointer;
+  padding: 0;
+  top: 50%;
+  right: 5px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background: url(../img/svg/icon-close.svg);
+  background-repeat: no-repeat;
+  width: 10px;
+  height: 10px;
+  border: none;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.table__delete-row-button.focus-visible:focus {
+  opacity: 0.2;
+}
+
+.preloader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 8vmax;
+  height: 8vmax;
+  border-right: 4px solid #ffffff;
+  border-radius: 100%;
+  -webkit-animation: spinRight 800ms linear infinite;
+  animation: spinRight 800ms linear infinite;
+}
+
+.preloader:before,
+.preloader:after {
+  content: '';
+  width: 6vmax;
+  height: 6vmax;
+  display: block;
+  position: absolute;
+  top: calc(50% - 3vmax);
+  left: calc(50% - 3vmax);
+  border-left: 3px solid #ffffff;
+  border-radius: 100%;
+  -webkit-animation: spinLeft 800ms linear infinite;
+  animation: spinLeft 800ms linear infinite;
+}
+
+.preloader:after {
+  width: 4vmax;
+  height: 4vmax;
+  top: calc(50% - 2vmax);
+  left: calc(50% - 2vmax);
+  border: 0;
+  border-right: 2px solid #ffffff;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.preloader--hiding {
+  -webkit-transition: 0.3s opacity;
+  -o-transition: 0.3s opacity;
+  transition: 0.3s opacity;
+  opacity: 0;
+}
+
+.preloader--hidden {
+  visibility: hidden;
+}
+
+@-webkit-keyframes spinLeft {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(720deg);
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes spinLeft {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(720deg);
+    transform: rotate(720deg);
+  }
+}
+
+@-webkit-keyframes spinRight {
+  from {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spinRight {
+  from {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 }
 
 @media (max-width: 1279px) {
@@ -758,5 +896,9 @@ button,
 
   .starships__button--delete:hover:not(.focus-visible) {
     background-color: #e6426b;
+  }
+
+  .table__delete-row-button:hover:not(.focus-visible) {
+    opacity: 0.2;
   }
 }
