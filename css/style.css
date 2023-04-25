@@ -665,7 +665,7 @@ button,
 .table thead {
   position: sticky;
   top: 0;
-  z-index: 5;
+  z-index: 1;
 }
 
 .table td,
@@ -968,6 +968,7 @@ button,
   -webkit-transition: all 0.3s ease-in 0s;
   -o-transition: all 0.3s ease-in 0s;
   transition: all 0.3s ease-in 0s;
+  z-index: 2;
 }
 
 .yoda__text {
