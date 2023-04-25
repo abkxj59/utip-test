@@ -587,27 +587,6 @@ button,
   min-height: 100vh;
 }
 
-.page__yoda {
-  position: absolute;
-  background: none;
-  border: none;
-  bottom: 0;
-  left: 70%;
-  -webkit-transition: all 0.6s;
-  -o-transition: all 0.6s;
-  transition: all 0.6s;
-  -webkit-transform-origin: 70% 100%;
-  -ms-transform-origin: 70% 100%;
-  transform-origin: 70% 100%;
-  z-index: 10;
-}
-
-.page__yoda.focus-visible:focus {
-  -webkit-transform: scale(1.4);
-  -ms-transform: scale(1.4);
-  transform: scale(1.4);
-}
-
 .starships {
   max-width: 1180px;
   margin: 0 auto 150px;
@@ -735,6 +714,35 @@ button,
   background-color: rgba(235, 55, 65, 0.7);
   font-weight: 500;
   text-transform: uppercase;
+}
+
+.table__data-row td {
+  position: relative;
+  -webkit-transition: all 1s, color 0.5s ease-in 0.5s;
+  -o-transition: all 1s, color 0.5s ease-in 0.5s;
+  transition: all 1s, color 0.5s ease-in 0.5s;
+}
+
+.table__data-row td::after {
+  -webkit-transition: 0.3s ease, opacity 0.5s ease-in 0.5s;
+  -o-transition: 0.3s ease, opacity 0.5s ease-in 0.5s;
+  transition: 0.3s ease, opacity 0.5s ease-in 0.5s;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: "";
+  width: 0;
+  height: 1px;
+  background-color: #201515;
+}
+
+.table__data-row--collapsing td {
+  color: transparent;
+}
+
+.table__data-row--collapsing td::after {
+  width: 100%;
+  opacity: 0;
 }
 
 .table__delete-row-button {
@@ -895,6 +903,91 @@ button,
   }
 }
 
+.yoda {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  bottom: 0;
+  right: 15%;
+}
+
+.yoda__button {
+  background: none;
+  border: none;
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  transition: all 0.6s;
+  z-index: 10;
+}
+
+.yoda__button.focus-visible:focus .yoda__pic {
+  -webkit-transform: scale(1.4);
+  -ms-transform: scale(1.4);
+  transform: scale(1.4);
+}
+
+.yoda__button.focus-visible:focus + .yoda__baloon {
+  opacity: 1;
+  -webkit-transition: all 0.5s ease-in-out 0.1s;
+  -o-transition: all 0.5s ease-in-out 0.1s;
+  transition: all 0.5s ease-in-out 0.1s;
+  visibility: visible;
+}
+
+.yoda__pic {
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  transition: all 0.6s;
+  -webkit-transform-origin: 70% 100%;
+  -ms-transform-origin: 70% 100%;
+  transform-origin: 70% 100%;
+}
+
+.yoda__baloon {
+  position: absolute;
+  padding: 0 10px;
+  right: -20px;
+  bottom: 290px;
+  width: 440px;
+  font-size: 36px;
+  line-height: 120%;
+  background-color: #ffffff;
+  border: 10px solid #000000;
+  border-radius: 45px;
+  color: #000000;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+
+.yoda__text {
+  text-align: center;
+}
+
+.yoda__tail {
+  position: absolute;
+  right: 100px;
+  bottom: -27px;
+  width: 40px;
+  height: 40px;
+  border-top: 10px solid #000000;
+  border-right: 10px solid #000000;
+  background-color: #ffffff;
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
 @media (max-width: 1279px) {
   .starships {
     margin: 0 40px 140px;
@@ -908,11 +1001,6 @@ button,
 @media (max-width: 767px) {
   .page__body {
     padding: 10px 0;
-  }
-
-  .page__yoda {
-    left: 60%;
-    height: 150px;
   }
 
   .starships {
@@ -946,15 +1034,35 @@ button,
   .table {
     font-size: 12px;
   }
+
+  .yoda__button {
+    right: 5%;
+  }
+
+  .yoda__pic {
+    height: 150px;
+  }
+
+  .yoda__baloon {
+    padding: 0 5px;
+    bottom: 200px;
+    right: 0;
+    width: 280px;
+    font-size: 20px;
+    border-width: 5px;
+    border-radius: 20px;
+  }
+
+  .yoda__tail {
+    bottom: -14px;
+    right: 60px;
+    width: 20px;
+    height: 20px;
+    border-width: 5px;
+  }
 }
 
 @media (hover: hover) {
-  .page__yoda:hover:not(.focus-visible) {
-    -webkit-transform: scale(1.4);
-    -ms-transform: scale(1.4);
-    transform: scale(1.4);
-  }
-
   .starships__button:hover:not(.focus-visible) {
     -webkit-box-shadow: 0 0 20px #ffffff;
     box-shadow: 0 0 20px #ffffff;
@@ -974,5 +1082,19 @@ button,
 
   .table__delete-row-button:hover:not(.focus-visible) {
     opacity: 0.2;
+  }
+
+  .yoda__button:hover:not(.focus-visible) .yoda__pic {
+    -webkit-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    transform: scale(1.4);
+  }
+
+  .yoda__button:hover:not(.focus-visible) + .yoda__baloon {
+    opacity: 1;
+    -webkit-transition: all 0.5s ease-in-out 0.1s;
+    -o-transition: all 0.5s ease-in-out 0.1s;
+    transition: all 0.5s ease-in-out 0.1s;
+    visibility: visible;
   }
 }
