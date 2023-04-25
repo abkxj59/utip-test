@@ -8,11 +8,11 @@ const getData = (onSuccess, onFail) => {
       })
       .then((data) => {
         onSuccess(data);
-        setTimeout(hidePreloader, 500);
+        hidePreloader();
       })
       .catch(() => {
         onFail();
-        setTimeout(hidePreloader, 500);
+        hidePreloader();
       });
 };
 

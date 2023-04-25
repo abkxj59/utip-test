@@ -17,17 +17,18 @@
 </head>
 <body class="page__body">
   <picture>
-    <source type="image/webp" srcset="img/back2.webp">
-    <img class="page__background" src="img/back2.jpg" alt="">
+    <source type="image/webp" srcset="img/back3.webp">
+    <img class="page__background" src="img/back3.jpg" alt="">
   </picture>
 
+  <button type="button" class="page__yoda" tabindex="0">
+    <picture>
+      <source type="image/webp" srcset="img/yoda.webp">
+      <img src="img/yoda.jpg" alt="">
+    </picture>
+  </button>
+
   <div class="page__preloader preloader preloader--hidden">
-    <!-- <div class="preloader__row">
-      <div class="preloader__item"></div>
-      <div class="preloader__item"></div>
-      <div class="preloader__item"></div>
-      <div class="preloader__item"></div>
-    </div> -->
   </div>
 
   <section class="page__section starships">
@@ -40,9 +41,9 @@
 
     <div class="starships__table-wrapper">
       <table class="starships__table table">
-        <thead>
+        <thead class="table__head">
           <th>Name</th>
-          <th>Class</th>
+          <th>Starship class</th>
           <th>Max atmosphering speed</th>
           <th>Hyperdrive rating</th>
           <th>Length</th>

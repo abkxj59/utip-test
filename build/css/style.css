@@ -570,6 +570,8 @@ button,
 
 .page__body {
   padding: 40px 0;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .page__background {
@@ -581,12 +583,34 @@ button,
   object-position: 55%;
   width: 100%;
   z-index: -1;
+  height: 100%;
   min-height: 100vh;
+}
+
+.page__yoda {
+  position: absolute;
+  background: none;
+  border: none;
+  bottom: 0;
+  left: 70%;
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  transition: all 0.6s;
+  -webkit-transform-origin: 70% 100%;
+  -ms-transform-origin: 70% 100%;
+  transform-origin: 70% 100%;
+  z-index: 10;
+}
+
+.page__yoda.focus-visible:focus {
+  -webkit-transform: scale(1.4);
+  -ms-transform: scale(1.4);
+  transform: scale(1.4);
 }
 
 .starships {
   max-width: 1180px;
-  margin: 0 auto;
+  margin: 0 auto 150px;
   padding: 40px;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 40px;
@@ -642,7 +666,7 @@ button,
   -ms-overflow-style: none;
   scrollbar-width: none;
   margin-top: 50px;
-  max-height: 200px;
+  max-height: 250px;
 }
 
 .starships__table-wrapper::-webkit-scrollbar {
@@ -662,9 +686,7 @@ button,
 .table thead {
   position: sticky;
   top: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(25%, rgba(255, 255, 255, 0.1)), color-stop(30%, rgba(255, 255, 255, 0.4)), color-stop(50%, white), to(white));
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.4) 30%, white 50%, white 100%);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.4) 30%, white 50%, white 100%);
+  z-index: 5;
 }
 
 .table td,
@@ -678,15 +700,20 @@ button,
   border-left: none;
 }
 
-.table td:last-child,
-.table th:last-child {
+.table td:last-of-type,
+.table th:last-of-type {
   border-right: none;
   padding-right: 25px;
 }
 
 .table th {
+  cursor: pointer;
   border-top: none;
   text-shadow: 0 0 4px #81e99f;
+  padding: 10px 10px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(20%, rgba(255, 255, 255, 0)), color-stop(25%, rgba(255, 255, 255, 0.1)), color-stop(30%, rgba(255, 255, 255, 0.4)), color-stop(50%, #ffffff), to(#ffffff));
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.4) 30%, #ffffff 50%, #ffffff 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.4) 30%, #ffffff 50%, #ffffff 100%);
 }
 
 .table tr {
@@ -713,16 +740,17 @@ button,
 .table__delete-row-button {
   position: absolute;
   cursor: pointer;
-  padding: 0;
+  padding: 1px;
   top: 50%;
   right: 5px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  background: url(../img/svg/icon-close.svg);
+  background: url("../img/svg/cross.svg");
   background-repeat: no-repeat;
-  width: 10px;
-  height: 10px;
+  background-position: center;
+  width: 11px;
+  height: 11px;
   border: none;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
@@ -731,6 +759,40 @@ button,
 
 .table__delete-row-button.focus-visible:focus {
   opacity: 0.2;
+}
+
+.table__sorting {
+  position: relative;
+}
+
+.table__sorting::after {
+  position: absolute;
+  top: 48%;
+  right: 5px;
+  content: "";
+  border: 8px solid transparent;
+  border-bottom: 8px solid #000000;
+  vertical-align: middle;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.table__sorting-reverse {
+  position: relative;
+}
+
+.table__sorting-reverse::after {
+  position: absolute;
+  top: 48%;
+  right: 5px;
+  content: "";
+  border: 8px solid transparent;
+  border-bottom: 8px solid #000000;
+  vertical-align: middle;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .preloader {
@@ -748,9 +810,9 @@ button,
   animation: spinRight 800ms linear infinite;
 }
 
-.preloader:before,
-.preloader:after {
-  content: '';
+.preloader::before,
+.preloader::after {
+  content: "";
   width: 6vmax;
   height: 6vmax;
   display: block;
@@ -763,7 +825,7 @@ button,
   animation: spinLeft 800ms linear infinite;
 }
 
-.preloader:after {
+.preloader::after {
   width: 4vmax;
   height: 4vmax;
   top: calc(50% - 2vmax);
@@ -835,7 +897,7 @@ button,
 
 @media (max-width: 1279px) {
   .starships {
-    margin: 0 40px;
+    margin: 0 40px 140px;
   }
 
   .starships__heading {
@@ -848,10 +910,15 @@ button,
     padding: 10px 0;
   }
 
+  .page__yoda {
+    left: 60%;
+    height: 150px;
+  }
+
   .starships {
     border-radius: 20px;
-    margin: 0 10px;
-    padding: 10px;
+    margin: 0 10px 120px;
+    padding: 20px 10px;
   }
 
   .starships__heading {
@@ -872,6 +939,7 @@ button,
   }
 
   .starships__table-wrapper {
+    max-height: 300px;
     margin-top: 20px;
   }
 
@@ -881,6 +949,12 @@ button,
 }
 
 @media (hover: hover) {
+  .page__yoda:hover:not(.focus-visible) {
+    -webkit-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    transform: scale(1.4);
+  }
+
   .starships__button:hover:not(.focus-visible) {
     -webkit-box-shadow: 0 0 20px #ffffff;
     box-shadow: 0 0 20px #ffffff;

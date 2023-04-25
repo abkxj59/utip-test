@@ -11,6 +11,7 @@ const ERROR_STYLE = {
   'fontSize': '25px',
   'fontWeight': 'bold',
   'textAlign': 'center',
+  'z-index': '10',
 };
 const STARSHIP_PARAMETERS = [
   'name',
@@ -30,11 +31,18 @@ const createNewCell = (data, parameter, row) => {
   row.appendChild(newCell);
 };
 
-const addDeleteButton = (row) => {
+const addDeleteRowButton = (row) => {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('table__delete-row-button');
   deleteButton.addEventListener('click', () => {
+    const starshipName = row.firstChild.textContent;
+    const starships = JSON.parse(sessionStorage.starships);
+    starships.results = starships.results.filter((starship) => {
+      return starship.name !== starshipName;
+    });
+    sessionStorage.starships = JSON.stringify(starships);
     row.remove();
+
     if (!table.querySelector('.table__data-row')) {
       tableCap.classList.remove('table__cap--hidden');
     }
@@ -48,7 +56,7 @@ const createNewRow = (data) => {
   STARSHIP_PARAMETERS.forEach((parameter) => {
     createNewCell(data, parameter, newRow);
   });
-  addDeleteButton(newRow);
+  addDeleteRowButton(newRow);
   newRowsFragment.appendChild(newRow);
 };
 
@@ -56,11 +64,13 @@ const resetTable = () => {
   const dataRows = document.querySelectorAll('.table__data-row');
   dataRows.forEach((row) => row.remove());
   tableCap.classList.remove('table__cap--hidden');
+  sessionStorage.removeItem('starships');
 };
 
 const printData = (data) => {
   if (data) {
     resetTable();
+    sessionStorage.starships = JSON.stringify(data);
     data.results.forEach((starship) => {
       createNewRow(starship);
     });

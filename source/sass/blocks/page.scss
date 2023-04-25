@@ -1,5 +1,7 @@
 .page__body {
   padding: 40px 0;
+  position: relative;
+  overflow-x: hidden;
 
   @include vp-768 {
     padding: 10px 0;
@@ -13,5 +15,26 @@
   object-position: 55%;
   width: 100%;
   z-index: -1;
+  height: 100%;
   min-height: 100vh;
+}
+
+.page__yoda {
+  position: absolute;
+  background: none;
+  border: none;
+  bottom: 0;
+  left: 70%;
+  transition: all 0.6s;
+  transform-origin: 70% 100%;
+  z-index: 10;
+
+  @include vp-768 {
+    left: 60%;
+    height: 150px;
+  }
+
+  @include hover-focus {
+    transform: scale(1.4);
+  }
 }

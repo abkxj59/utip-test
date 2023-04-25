@@ -14,7 +14,7 @@
 .table thead {
   position: sticky;
   top: 0;
-  background: linear-gradient(180deg, $color-transparent 0%, rgba($color-default-white, 0.1) 25%, rgba($color-default-white, 0.4) 30%,rgba($color-default-white, 1) 50%, rgba($color-default-white, 1) 100%);
+  z-index: 5;
 }
 
 .table td,
@@ -26,15 +26,18 @@
     border-left: none;
   }
 
-  &:last-child {
+  &:last-of-type {
     border-right: none;
     padding-right: 25px;
   }
 }
 
 .table th {
+  cursor: pointer;
   border-top: none;
-  text-shadow:  0 0 4px #81e99f;
+  text-shadow: 0 0 4px #81e99f;
+  padding: 10px 10px;
+  background: linear-gradient(180deg, $color-transparent 0%, rgba($color-default-white, 0) 20%, rgba($color-default-white, 0.1) 25%, rgba($color-default-white, 0.4) 30%, $color-default-white 50%, $color-default-white 100%);
 }
 
 .table tr {
@@ -63,18 +66,49 @@
 .table__delete-row-button {
   position: absolute;
   cursor: pointer;
-  padding: 0;
+  padding: 1px;
   top: 50%;
   right: 5px;
   transform: translateY(-50%);
-  background: url(../img/svg/icon-close.svg);
+  background: url("../img/svg/cross.svg");
   background-repeat: no-repeat;
-  width: 10px;
-  height: 10px;
+  background-position: center;
+  width: 11px;
+  height: 11px;
   border: none;
   transition: $trans-default;
 
   @include hover-focus {
     opacity: 0.2;
+  }
+}
+
+.table__sorting {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 48%;
+    right: 5px;
+    content: "";
+    border: 8px solid transparent;
+    border-bottom: 8px solid $color-default-black;
+    vertical-align: middle;
+    transform: translateY(-50%);
+  }
+}
+
+.table__sorting-reverse {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 48%;
+    right: 5px;
+    content: "";
+    border: 8px solid transparent;
+    border-bottom: 8px solid $color-default-black;
+    vertical-align: middle;
+    transform: rotate(180deg);
   }
 }
