@@ -1,4 +1,5 @@
 const ALERT_SHOW_TIME = 2500;
+const ROW_COLLAPSE_TIME = 1100;
 const ERROR_STYLE = {
   'position': 'absolute',
   'width': '80%',
@@ -31,6 +32,16 @@ const createNewCell = (data, parameter, row) => {
   row.appendChild(newCell);
 };
 
+const collapseRow = (row) => {
+  row.classList.add('table__data-row--collapsing');
+  setTimeout(() => {
+    row.remove();
+    if (!table.querySelector('.table__data-row')) {
+      tableCap.classList.remove('table__cap--hidden');
+    }
+  }, ROW_COLLAPSE_TIME);
+};
+
 const addDeleteRowButton = (row) => {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('table__delete-row-button');
@@ -41,13 +52,10 @@ const addDeleteRowButton = (row) => {
       return starship.name !== starshipName;
     });
     sessionStorage.starships = JSON.stringify(starships);
-    row.remove();
-
-    if (!table.querySelector('.table__data-row')) {
-      tableCap.classList.remove('table__cap--hidden');
-    }
+    collapseRow(row);
   });
-  row.appendChild(deleteButton);
+  row.lastChild.style.position = 'relative';
+  row.lastChild.appendChild(deleteButton);
 };
 
 const createNewRow = (data) => {

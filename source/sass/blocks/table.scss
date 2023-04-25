@@ -63,6 +63,31 @@
   }
 }
 
+.table__data-row td {
+  position: relative;
+  transition: all 1s, color 0.5s ease-in 0.5s;
+
+  &::after {
+    transition: $trans-default, opacity 0.5s ease-in 0.5s;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    content: "";
+    width: 0;
+    height: 1px;
+    background-color: rgb(32, 21, 21);
+  }
+}
+
+.table__data-row--collapsing td {
+  color: transparent;
+
+  &::after {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
 .table__delete-row-button {
   position: absolute;
   cursor: pointer;

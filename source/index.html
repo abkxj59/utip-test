@@ -16,21 +16,6 @@
   <link rel="icon" href="favicon/favicon-32x32.png">
 </head>
 <body class="page__body">
-  <picture>
-    <source type="image/webp" srcset="img/back3.webp">
-    <img class="page__background" src="img/back3.jpg" alt="">
-  </picture>
-
-  <button type="button" class="page__yoda" tabindex="0">
-    <picture>
-      <source type="image/webp" srcset="img/yoda.webp">
-      <img src="img/yoda.jpg" alt="">
-    </picture>
-  </button>
-
-  <div class="page__preloader preloader preloader--hidden">
-  </div>
-
   <section class="page__section starships">
     <h1 class="starships__heading">Starships list from the Star Wars Universe</h1>
 
@@ -42,11 +27,13 @@
     <div class="starships__table-wrapper">
       <table class="starships__table table">
         <thead class="table__head">
-          <th>Name</th>
-          <th>Starship class</th>
-          <th>Max atmosphering speed</th>
-          <th>Hyperdrive rating</th>
-          <th>Length</th>
+          <tr>
+            <th>Name</th>
+            <th>Starship class</th>
+            <th>Max atmosphering speed</th>
+            <th>Hyperdrive rating</th>
+            <th>Length</th>
+          </tr>
         </thead>
         <tr class="table__cap">
           <td colspan="5">No data. Press button "Get starships"</td>
@@ -54,6 +41,28 @@
       </table>
     </div>
   </section>
+
+  <picture>
+    <source type="image/webp" srcset="img/back3.webp">
+    <img class="page__background" src="img/back3.jpg" alt="">
+  </picture>
+
+  <div class="page__yoda yoda">
+    <button type="button" class="yoda__button" tabindex="0">
+      <picture>
+        <source type="image/webp" srcset="img/yoda.webp">
+        <img class="yoda__pic" src="img/yoda.jpg" alt="">
+      </picture>
+    </button>
+    <div class="yoda__baloon">
+      <p class="yoda__text">Да прибудет со мной сила, и ожидания ваши оправдаю я &#128522;</p>
+      <div class="yoda__tail"></div>
+    </div>
+  </div>
+
+    <div class="page__preloader preloader preloader--hidden">
+  </div>
+
   <script type="module" src="js/main.min.js"></script>
 </body>
 </html>

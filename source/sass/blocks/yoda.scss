@@ -1,0 +1,91 @@
+.yoda {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  bottom: 0;
+  right: 15%;
+}
+
+.yoda__button {
+  background: none;
+  border: none;
+  transition: all 0.6s;
+  z-index: 10;
+
+  @include vp-768 {
+    right: 5%;
+  }
+
+  @include hover-focus {
+    .yoda__pic {
+      transform: scale(1.4);
+    }
+
+    + .yoda__baloon {
+      opacity: 1;
+      transition: all 0.5s ease-in-out 0.1s;
+      visibility: visible;
+    }
+  }
+}
+
+.yoda__pic {
+  transition: all 0.6s;
+  transform-origin: 70% 100%;
+
+  @include vp-768 {
+    height: 150px;
+  }
+}
+
+.yoda__baloon {
+  position: absolute;
+  padding: 0 10px;
+  right: -20px;
+  bottom: 290px;
+  width: 440px;
+  font-size: 36px;
+  line-height: 120%;
+  background-color: $color-default-white;
+  border: 10px solid $color-default-black;
+  border-radius: 45px;
+  color: $color-default-black;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in 0s;
+
+  @include vp-768 {
+    padding: 0 5px;
+    bottom: 200px;
+    right: 0;
+    width: 280px;
+    font-size: 20px;
+    border-width: 5px;
+    border-radius: 20px;
+  }
+}
+
+.yoda__text {
+  text-align: center;
+}
+
+.yoda__tail {
+  position: absolute;
+  right: 100px;
+  bottom: -27px;
+  width: 40px;
+  height: 40px;
+  border-top: 10px solid $color-default-black;
+  border-right: 10px solid $color-default-black;
+  background-color: $color-default-white;
+  transform: rotate(135deg);
+
+  @include vp-768 {
+    bottom: -14px;
+    right: 60px;
+    width: 20px;
+    height: 20px;
+    border-width: 5px;
+  }
+}
